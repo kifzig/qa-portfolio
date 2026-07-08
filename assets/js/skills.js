@@ -75,6 +75,12 @@ function toggleDetail(card, grid, skill) {
     outcomeBlock = `<dt>Outcome</dt><dd>${escapeHtml(skill.outcome)}</dd>`;
   }
 
+  let linkHtml = "";
+  if (skill.link) {
+    const safeUrl = new URL(skill.link.url, window.location.href).href;
+    linkHtml = `<a class="skill-link" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(skill.link.label)} &rarr;</a>`;
+  }
+
   detail.innerHTML = `
     <button class="close-detail" type="button">Close &times;</button>
     <span class="badge ${badgeClass}">${badgeLabel}</span>
@@ -86,6 +92,7 @@ function toggleDetail(card, grid, skill) {
       ${scenarioBlock}
       ${outcomeBlock}
     </dl>
+    ${linkHtml}
     ${roadmapHtml}
   `;
 

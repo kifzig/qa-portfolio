@@ -54,10 +54,14 @@ Two confirmed "Currently Building" skills:
   API Testing card leads with curl as the real evidence, Postman as the roadmap/in-progress part.
   Roadmap: build a Postman collection against a public API (e.g. reqres.in) demonstrating status
   code validation, JSON checks, auth flow — link it here once built.
-- **Playwright** — resume says "growing exposure" / "(familiarity)". Real existing evidence is
-  browser automation (not testing) in the job_apply project. Roadmap: real Playwright test
-  suite in `~/playwright-learning`, Page Object Model, same regression mindset as her Cypress
-  work at Zelifcam.
+- **Playwright** — DONE, flipped to "core" 2026-07-08. Real Playwright test suite built and
+  pushed to https://github.com/kifzig/playwright-learning (Page Object Model, TypeScript,
+  login + dashboard/logout coverage against the public OrangeHRM demo, 15/15 passing across
+  Chromium/Firefox/WebKit, CI via GitHub Actions). Serialized execution (`workers: 1`) is
+  required — the shared public demo collides on session state under parallel load, this isn't
+  test flakiness. Linked from skills.html (playwright-automation skill card, has a `link` field
+  now) and projects.html. Resume itself still says "(familiarity)" for Playwright — that's fine,
+  the site is allowed to be ahead of the PDF resume; update the resume too next time it's revised.
 
 ## Grounded resume facts to reuse accurately (from the QA resume PDF)
 - Title at Zelifcam: **Quality Assurance Analyst**, April 2024–present
@@ -99,15 +103,17 @@ resume already tiers it (e.g. resume already says "Selenium" plainly but "Playwr
 
 ## Next steps (not yet done)
 - [x] Confirm GitHub Pages is live at https://kifzig.github.io/qa-portfolio/ (confirmed 2026-07-07)
-- [ ] Build a real Playwright test suite in `~/playwright-learning` (Page Object Model, against
-      a public demo app like saucedemo.com), replacing the untouched default boilerplate test;
-      init git, push as its own public repo, then link it from skills.html (the
-      `playwright-automation` skill card, id in skills-data.js) and projects.html
+- [x] Build a real Playwright test suite — done 2026-07-08, see
+      https://github.com/kifzig/playwright-learning. Linked in and flipped to "core" on both
+      skills.html and projects.html.
 - [ ] Build a Postman collection against a public API (e.g. reqres.in) — status code validation,
       JSON response validation, chained auth flow (login → token → protected endpoint); export
-      and link it from skills.html (the `curl-postman` skill card) and projects.html
-- [ ] Once both of the above are real and linked, flip their `status` from `"building"` to
-      `"core"` in assets/js/skills-data.js and remove/update the `roadmap` field
+      and link it from skills.html (the `curl-postman` skill card, add a `link` field like
+      playwright-automation has) and projects.html. Once linked, flip `status` from `"building"`
+      to `"core"` and remove the `roadmap` field.
 - [ ] Optional: sanitize a public version of the `job_apply` project (strip `.env`, personal
       resumes/cover letters) so the AI Job Application Assistant case study on projects.html can
       link to real source instead of just describing it
+- [ ] Optional: resume.html / the QA resume PDF still say Playwright is "(familiarity)" — now
+      understates it. Worth a resume revision pass once Postman is also done, rather than
+      updating the resume piecemeal.

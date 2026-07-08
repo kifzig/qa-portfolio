@@ -68,14 +68,21 @@
       </div>
 
       <div class="project-card">
-        <h3>Playwright Test Suite <span class="badge badge-building">Currently Building</span></h3>
-        <p class="project-meta">Personal project (in progress) &middot; Playwright, TypeScript, GitHub Actions</p>
+        <h3>Playwright Test Suite <span class="badge badge-core">Core Skill Evidence</span></h3>
+        <p class="project-meta">Personal project &middot; Playwright, TypeScript, GitHub Actions</p>
         <p>
-          A real, from-scratch Playwright test suite against a public demo app, structured with a Page Object
+          A real Playwright test suite against the public OrangeHRM demo app, structured with a Page Object
           Model — the same regression mindset behind my Cypress work at Zelifcam, applied to a second
-          automation framework. CI is already configured; the test suite itself is what's being built out next.
+          automation framework. Covers login (valid credentials, invalid credentials, empty-field validation)
+          and dashboard/logout flows, running in GitHub Actions CI on every push.
         </p>
-        <div class="roadmap-note"><strong>Roadmap:</strong> replace the default boilerplate test with real page objects and scenarios, then link the live repo here.</div>
+        <ul>
+          <li>15/15 tests passing across Chromium, Firefox, and WebKit</li>
+          <li>Serialized execution (<code>workers: 1</code>) to avoid session collisions on the shared public demo — a real environment constraint, documented in the repo rather than worked around silently</li>
+        </ul>
+        <p class="project-meta" style="margin-top:14px;">
+          <a href="https://github.com/kifzig/playwright-learning">github.com/kifzig/playwright-learning &rarr;</a>
+        </p>
       </div>
 
       <div class="project-card">

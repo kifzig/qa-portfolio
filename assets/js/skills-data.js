@@ -226,21 +226,35 @@ WHERE u.id IS NULL;`,
       {
         id: "playwright-automation",
         name: "Playwright Automation",
-        status: "building",
-        summary: "Real Playwright automation experience; building it into a formal test suite.",
-        description: "I've already used Playwright for real browser automation — driving a real Chromium browser in a personal Python project to load a job posting and extract its content — but that's automation, not yet a formal Playwright *test* suite in the Cypress sense. I'm building example Playwright tests (Page Object Model, the same regression mindset as my Cypress work) against a public demo app to make that transition concrete.",
-        example: `// Target structure for the in-progress suite
-test('user can add an item to the cart', async ({ page }) => {
-  await page.goto('https://www.saucedemo.com/');
-  await page.getByPlaceholder('Username').fill('standard_user');
-  await page.getByPlaceholder('Password').fill('secret_sauce');
-  await page.getByRole('button', { name: 'Login' }).click();
-  await page.getByText('Add to cart').first().click();
-  await expect(page.locator('.shopping_cart_badge')).toHaveText('1');
+        status: "core",
+        summary: "Page Object Model test suite against a live demo app, running in CI.",
+        description: "I built a real Playwright test suite (TypeScript, Page Object Model) against the public OrangeHRM demo app — the same regression mindset as my Cypress work at Zelifcam, applied to a second automation framework. It covers login (positive and negative cases) and dashboard/logout flows, and runs in GitHub Actions on every push. I'd already used Playwright for browser automation in a personal Python project (see Projects), but this is the first formal Playwright *test* suite.",
+        example: `// pages/LoginPage.ts
+export class LoginPage {
+  readonly usernameInput = this.page.locator("input[name='username']");
+  readonly passwordInput = this.page.locator("input[name='password']");
+  readonly loginButton = this.page.getByRole('button', { name: 'Login' });
+  readonly errorAlert = this.page.locator('.oxd-alert-content-text');
+
+  constructor(private page: Page) {}
+
+  async login(username: string, password: string) {
+    await this.usernameInput.fill(username);
+    await this.passwordInput.fill(password);
+    await this.loginButton.click();
+  }
+}
+
+// tests/login.spec.ts
+test('shows an error for invalid credentials', async ({ page }) => {
+  const loginPage = new LoginPage(page);
+  await loginPage.goto();
+  await loginPage.login('not_a_real_user', 'wrong_password');
+  await expect(loginPage.errorAlert).toHaveText('Invalid credentials');
 });`,
-        scenario: "See the Automation project on the Projects page for the current status and repo link.",
-        outcome: "",
-        roadmap: "In progress in the playwright-learning repo: a small real suite (not the default boilerplate) against a public demo app, with a page object per screen, run in GitHub Actions CI. Link will move from 'in progress' to the live repo here once pushed."
+        scenario: "The suite runs against a shared public demo instance, not an app I control. Running multiple browsers/workers in parallel caused login collisions on shared session state there, so I serialized execution (workers: 1) instead of chasing what looked like flaky tests but was actually a shared-environment constraint.",
+        outcome: "15/15 tests passing across Chromium, Firefox, and WebKit, running in CI on every push.",
+        link: { label: "View source on GitHub", url: "https://github.com/kifzig/playwright-learning" }
       }
     ]
   },
