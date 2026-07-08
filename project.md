@@ -18,9 +18,15 @@ description / example / real-world scenario / outcome for each.
 - Plain HTML/CSS/JS. No build step, no framework — deploys straight to GitHub Pages,
   easy to hand-edit as new skills/evidence come in.
 - Pages: index.html (home/hero), resume.html, skills.html (the clickable skill explorer),
+  process.html (8-step testing workflow timeline, cross-links to skills.html category anchors),
   projects.html (evidence/case studies).
 - Skill card data lives in assets/js/skills-data.js as a plain JS array — edit that file
   to add/update skills, no need to touch HTML.
+- process.html is hand-written HTML (not data-driven like skills.html) since it's a fixed
+  8-step sequence, not an open-ended list. Each step's "Related skill" link points to a
+  category id in skills.html (e.g. #business-analysis, #test-design, #defect-management,
+  #manual-exploratory, #sdlc) — those ids come from SKILL_CATEGORIES[].id in skills-data.js,
+  so if a category id ever changes there, update the matching href in process.html too.
 
 ## Source material (on this machine, not copied into repo verbatim)
 - `~/job_apply/data/custom_resume.md` — general resume draft (Analyst-flavored, less relevant)

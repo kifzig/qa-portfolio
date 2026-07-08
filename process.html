@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing Process — Kiffany Francis</title>
+  <meta name="description" content="How Kiffany Francis approaches QA from requirements review through release support." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="process">
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Kiffany Francis</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html" data-page="home">Home</a></li>
+          <li><a href="resume.html" data-page="resume">Resume</a></li>
+          <li><a href="skills.html" data-page="skills">Skills</a></li>
+          <li><a href="process.html" data-page="process">Process</a></li>
+          <li><a href="projects.html" data-page="projects">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="tight" style="padding-top:40px;">
+      <h1 style="margin-bottom:4px;">Testing Process</h1>
+      <p class="section-blurb">
+        The same workflow I run at Zelifcam on every feature and release, start to finish.
+        Each step links to the skill it draws on.
+      </p>
+    </section>
+
+    <section>
+      <div class="process-timeline">
+
+        <div class="process-step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>Review Requirements</h3>
+            <p>Before writing a single test case, I read the ticket and talk to the developer or PM about anything that isn't fully specified — expected behavior for edge cases, what's explicitly out of scope. Ambiguity gets resolved before testing starts, not argued about after a "bug" is filed that turns out to be intended behavior.</p>
+            <div class="tag-list"><span class="tag">ClickUp</span><span class="tag">Requirements review</span></div>
+            <a class="step-link" href="skills.html#business-analysis">Related skill: Requirements &amp; Acceptance Criteria Review &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>Identify Risks</h3>
+            <p>Testing time is never unlimited, so I decide what actually needs coverage: high-traffic paths, areas that have broken before, anything touching auth or data integrity. For inputs, I use boundary value analysis and equivalence partitioning to pick the values worth testing instead of testing every possible value.</p>
+            <div class="tag-list"><span class="tag">Risk-based testing</span><span class="tag">Boundary value analysis</span><span class="tag">Equivalence partitioning</span></div>
+            <a class="step-link" href="skills.html#test-design">Related skill: Test Design Techniques &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>Write Test Scenarios</h3>
+            <p>The requirement plus the identified risks become a set of test cases — main path, edge cases, negative cases — organized into a checklist so they're repeatable on the next release, not written from scratch every time.</p>
+            <div class="tag-list"><span class="tag">Test cases</span><span class="tag">Test plans</span><span class="tag">Checklists</span></div>
+            <a class="step-link" href="skills.html#test-design">Related skill: Test Case &amp; Test Plan Design &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>Execute Tests</h3>
+            <p>I run the test cases manually — functional testing on the new work, exploratory testing where the spec doesn't cover everything — and lean on Cypress for regression paths that are already stable and automated. Anything user-facing gets checked across browsers and through a full login/logout cycle.</p>
+            <div class="tag-list"><span class="tag">Manual testing</span><span class="tag">Cypress</span><span class="tag">Cross-browser testing</span></div>
+            <a class="step-link" href="skills.html#manual-exploratory">Related skill: Manual &amp; Exploratory Testing &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">5</div>
+          <div class="step-content">
+            <h3>Log Defects</h3>
+            <p>Every defect gets a reproducible report: exact steps, expected vs. actual result, a screen recording, and severity and priority set independently of each other. It's filed in ClickUp and tagged to the right developer with everything they need to start immediately.</p>
+            <div class="tag-list"><span class="tag">Bug reports</span><span class="tag">Severity vs. priority</span><span class="tag">ClickUp</span></div>
+            <a class="step-link" href="skills.html#defect-management">Related skill: Bug Reporting &amp; the Defect Lifecycle &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">6</div>
+          <div class="step-content">
+            <h3>Verify Fixes</h3>
+            <p>Once a developer marks a defect fixed, I re-run the original repro steps against the fix build myself — not just confirming the code changed, confirming the reported behavior is actually gone before the ticket closes.</p>
+            <div class="tag-list"><span class="tag">Regression verification</span><span class="tag">Defect tracking</span></div>
+            <a class="step-link" href="skills.html#defect-management">Related skill: Bug Reporting &amp; the Defect Lifecycle &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">7</div>
+          <div class="step-content">
+            <h3>Perform Regression Testing</h3>
+            <p>Before a release, I run a smoke pass first to confirm the build is stable, then a full regression pass covering prior defects — including anything just verified in step 6 — and core user workflows. The highest-traffic paths are also checked automatically by the Cypress suite.</p>
+            <div class="tag-list"><span class="tag">Regression testing</span><span class="tag">Smoke testing</span><span class="tag">Sanity testing</span></div>
+            <a class="step-link" href="skills.html#manual-exploratory">Related skill: Functional, Regression &amp; Smoke/Sanity Testing &rarr;</a>
+          </div>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">8</div>
+          <div class="step-content">
+            <h3>Support Release</h3>
+            <p>A final smoke test on the actual release candidate before sign-off, then monitoring after release with Rollbar for anything that slipped through. Any post-release hotfix goes through the same verify-and-regress steps before it's considered done.</p>
+            <div class="tag-list"><span class="tag">Release validation</span><span class="tag">Rollbar</span><span class="tag">Agile / CI-CD</span></div>
+            <a class="step-link" href="skills.html#sdlc">Related skill: Agile, Scrum &amp; the SDLC/STLC &rarr;</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Kiffany Francis</span>
+      <span>
+        <a href="mailto:kif.francis@gmail.com">kif.francis@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/kiffany-francis">LinkedIn</a> ·
+        <a href="https://github.com/kifzig">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
