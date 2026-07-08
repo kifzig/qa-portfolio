@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Kiffany Francis</title>
+  <meta name="description" content="Case studies and evidence projects behind the QA skills." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body data-page="projects">
+  <header class="site-header">
+    <div class="nav-inner">
+      <a class="brand" href="index.html">Kiffany Francis</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation">&#9776;</button>
+      <nav class="site-nav">
+        <ul>
+          <li><a href="index.html" data-page="home">Home</a></li>
+          <li><a href="resume.html" data-page="resume">Resume</a></li>
+          <li><a href="skills.html" data-page="skills">Skills</a></li>
+          <li><a href="projects.html" data-page="projects">Projects</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="tight" style="padding-top:40px;">
+      <h1 style="margin-bottom:4px;">Projects</h1>
+      <p class="section-blurb">The work behind the skills — some shipped at work, some personal, some still in progress.</p>
+    </section>
+
+    <section>
+      <div class="project-card">
+        <h3>AI Job Application Assistant <span class="badge badge-core">Core Skill Evidence</span></h3>
+        <p class="project-meta">Personal project &middot; Python, Playwright, Anthropic API (Claude), BeautifulSoup, pypdf</p>
+        <p>
+          A Python tool that automates parts of my own job search: it takes a job posting URL, drives a real
+          Chromium browser with Playwright to load and save the page, strips it down to plain text, and sends
+          it to Claude to extract structured data — job title, company, location, and requirements. It then
+          scores how well a given resume matches the posting (with Claude reasoning through pros and cons),
+          generates a tailored cover letter, produces a skills-match summary highlighting gaps to address, and
+          logs every application to a tracking spreadsheet.
+        </p>
+        <p><strong>What this demonstrates:</strong></p>
+        <ul>
+          <li>Real Playwright usage — browser automation, not just a tutorial exercise</li>
+          <li>Programmatic use of the Claude/Anthropic API: prompt design, structured extraction, and grounding
+            generated content in real source data to avoid fabricated claims</li>
+          <li>Parsing and validating data from multiple formats (HTML, PDF) before trusting it downstream</li>
+        </ul>
+        <p class="project-meta" style="margin-top:14px;">
+          Source isn't public — it stores my own API key and personal application data — but I'm glad to walk
+          through the code directly, or put together a sanitized public version on request.
+        </p>
+      </div>
+
+      <div class="project-card">
+        <h3>Cypress Regression Suite <span class="badge badge-core">Core Skill Evidence</span></h3>
+        <p class="project-meta">Zelifcam &middot; Cypress, JavaScript, GitLab CI/CD</p>
+        <p>
+          I develop and maintain a reusable Cypress regression suite for a production React / Grails / MySQL
+          web application, converting proven manual test cases into automated coverage that runs as part of
+          the team's CI/CD pipeline. Coverage is prioritized around the workflows most users hit and the areas
+          that have broken before.
+        </p>
+        <p class="project-meta" style="margin-top:14px;">Employer-owned code, not public — described here rather than linked.</p>
+      </div>
+
+      <div class="project-card">
+        <h3>Playwright Test Suite <span class="badge badge-building">Currently Building</span></h3>
+        <p class="project-meta">Personal project (in progress) &middot; Playwright, TypeScript, GitHub Actions</p>
+        <p>
+          A real, from-scratch Playwright test suite against a public demo app, structured with a Page Object
+          Model — the same regression mindset behind my Cypress work at Zelifcam, applied to a second
+          automation framework. CI is already configured; the test suite itself is what's being built out next.
+        </p>
+        <div class="roadmap-note"><strong>Roadmap:</strong> replace the default boilerplate test with real page objects and scenarios, then link the live repo here.</div>
+      </div>
+
+      <div class="project-card">
+        <h3>Postman API Test Collection <span class="badge badge-building">Currently Building</span></h3>
+        <p class="project-meta">Personal project (in progress) &middot; Postman, public REST API</p>
+        <p>
+          A Postman collection against a public REST API, covering status code validation, JSON response
+          validation, and a chained authentication flow (login &rarr; token &rarr; protected endpoint). My daily
+          API testing today is curl-based (see the API Testing skill card); this formalizes that into a
+          reusable, shareable collection.
+        </p>
+        <div class="roadmap-note"><strong>Roadmap:</strong> build and export the collection, document it, and link it here.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> Kiffany Francis</span>
+      <span>
+        <a href="mailto:kif.francis@gmail.com">kif.francis@gmail.com</a> ·
+        <a href="https://www.linkedin.com/in/kiffany-francis">LinkedIn</a> ·
+        <a href="https://github.com/kifzig">GitHub</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
