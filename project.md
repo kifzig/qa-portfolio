@@ -92,7 +92,7 @@ resume already tiers it (e.g. resume already says "Selenium" plainly but "Playwr
   confirmed, site should be at https://kifzig.github.io/qa-portfolio/
 
 ## Next steps (not yet done)
-- [ ] Confirm GitHub Pages is live at https://kifzig.github.io/qa-portfolio/
+- [x] Confirm GitHub Pages is live at https://kifzig.github.io/qa-portfolio/ (confirmed 2026-07-07)
 - [ ] Build a real Playwright test suite in `~/playwright-learning` (Page Object Model, against
       a public demo app like saucedemo.com), replacing the untouched default boilerplate test;
       init git, push as its own public repo, then link it from skills.html (the
