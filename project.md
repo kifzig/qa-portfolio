@@ -82,7 +82,26 @@ resume already tiers it (e.g. resume already says "Selenium" plainly but "Playwr
 (familiarity)" — respect that distinction).
 
 ## Repo / hosting plan
-- Single repo `qa-portfolio`, public, on github.com/kifzig
-- GitHub Pages serving from main branch root
-- No `gh` CLI installed on this machine — repo creation/push needs to be worked out
-  (either install gh, or user creates the empty repo on github.com and we add it as remote)
+- Single repo `qa-portfolio`, public, at https://github.com/kifzig/qa-portfolio — **created and
+  pushed** (initial commit `58e3479`, remote `origin` set via SSH, `main` branch).
+- No `gh` CLI on this machine, but SSH auth to GitHub already works for `kifzig` — that's how
+  the push was done, no token needed.
+- GitHub Pages: needs to be enabled manually in the repo's Settings → Pages → Source →
+  "Deploy from a branch" → main → / (root). This is a UI-only step, no API token available to
+  do it from the CLI. **Status: instructions given to user, not yet confirmed live.** Once
+  confirmed, site should be at https://kifzig.github.io/qa-portfolio/
+
+## Next steps (not yet done)
+- [ ] Confirm GitHub Pages is live at https://kifzig.github.io/qa-portfolio/
+- [ ] Build a real Playwright test suite in `~/playwright-learning` (Page Object Model, against
+      a public demo app like saucedemo.com), replacing the untouched default boilerplate test;
+      init git, push as its own public repo, then link it from skills.html (the
+      `playwright-automation` skill card, id in skills-data.js) and projects.html
+- [ ] Build a Postman collection against a public API (e.g. reqres.in) — status code validation,
+      JSON response validation, chained auth flow (login → token → protected endpoint); export
+      and link it from skills.html (the `curl-postman` skill card) and projects.html
+- [ ] Once both of the above are real and linked, flip their `status` from `"building"` to
+      `"core"` in assets/js/skills-data.js and remove/update the `roadmap` field
+- [ ] Optional: sanitize a public version of the `job_apply` project (strip `.env`, personal
+      resumes/cover letters) so the AI Job Application Assistant case study on projects.html can
+      link to real source instead of just describing it
