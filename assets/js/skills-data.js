@@ -254,7 +254,10 @@ test('shows an error for invalid credentials', async ({ page }) => {
 });`,
         scenario: "The suite runs against a shared public demo instance, not an app I control. Running multiple browsers/workers in parallel caused login collisions on shared session state there, so I serialized execution (workers: 1) instead of chasing what looked like flaky tests but was actually a shared-environment constraint.",
         outcome: "15/15 tests passing across Chromium, Firefox, and WebKit, running in CI on every push.",
-        link: { label: "View source on GitHub", url: "https://github.com/kifzig/playwright-learning" }
+        links: [
+          { label: "View source on GitHub", url: "https://github.com/kifzig/playwright-learning" },
+          { label: "View the live test report", url: "https://kifzig.github.io/playwright-learning/" }
+        ]
       }
     ]
   },

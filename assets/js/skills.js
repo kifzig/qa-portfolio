@@ -75,11 +75,13 @@ function toggleDetail(card, grid, skill) {
     outcomeBlock = `<dt>Outcome</dt><dd>${escapeHtml(skill.outcome)}</dd>`;
   }
 
-  let linkHtml = "";
-  if (skill.link) {
-    const safeUrl = new URL(skill.link.url, window.location.href).href;
-    linkHtml = `<a class="skill-link" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(skill.link.label)} &rarr;</a>`;
-  }
+  const links = skill.links || (skill.link ? [skill.link] : []);
+  const linkHtml = links
+    .map((l) => {
+      const safeUrl = new URL(l.url, window.location.href).href;
+      return `<a class="skill-link" href="${escapeHtml(safeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(l.label)} &rarr;</a>`;
+    })
+    .join("");
 
   detail.innerHTML = `
     <button class="close-detail" type="button">Close &times;</button>

@@ -333,6 +333,7 @@ p.section-blurb {
 .skill-link {
   display: inline-block;
   margin-top: 18px;
+  margin-right: 20px;
   font-weight: 600;
   font-size: 0.92rem;
 }
