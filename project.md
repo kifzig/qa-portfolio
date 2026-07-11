@@ -101,6 +101,31 @@ resume already tiers it (e.g. resume already says "Selenium" plainly but "Playwr
   do it from the CLI. **Status: instructions given to user, not yet confirmed live.** Once
   confirmed, site should be at https://kifzig.github.io/qa-portfolio/
 
+## Boss's AI/automation skill list (2026-07-10)
+Kiffany's boss at Zelifcam raised a list of 8 skills to consider learning: workflow automation
+platforms (n8n/Zapier/Make), MCP server development, RAG patterns, Voice AI, fine-tuning models,
+browser automation (Playwright/Playwright MCP/Playwright CLI/Playwright Test Agents), AI
+governance, and harness engineering. Assessed as: **this reads like an AI Engineer list, not a
+QA Engineer list** — flagged that tension to Kiffany directly rather than adding all 8 uncritically.
+Her answer: workplace is genuinely pushing toward AI-powered QA, and she wants to lean into that
+rather than generic QA Engineer. Added 3 of the 8 as new "Currently Building" skill cards
+(the ones that tie to real existing evidence rather than being a cold start):
+- **Playwright Test Agents & MCP** (`playwright-agents-mcp` in the automation category) — direct
+  extension of the real playwright-learning suite. CLI/workflow details verified against
+  https://playwright.dev/docs/test-agents via WebFetch before writing the example, not guessed.
+- **Test & Eval Harness Engineering** (`harness-eval-engineering` in ai-assisted-qa category) —
+  ties to the existing Claude-at-Zelifcam evidence; "harness engineering" from the boss's list
+  interpreted as eval/test harness building, the standard QA/SDET reading of that term.
+- **Workflow Automation Platforms** (`workflow-automation-platforms` in reporting-analytics
+  category) — ties to real RosmanSearch automation background (Python/Excel macros/Salesforce
+  workflows), extended into n8n/Zapier/Make.
+Deliberately NOT added (assessed as ML/AI engineering, not QA, and would dilute the site's focus
+unless Kiffany later decides to pivot toward "AI QA/testing AI products" specifically rather than
+"AI-powered QA tooling"): RAG patterns/vector databases, Voice AI, fine-tuning models, AI
+governance, general MCP server development (as distinct from Playwright's own MCP tooling).
+Also fixed a stale tag while in there: TOOLS_TECHNOLOGIES still said "Playwright (building)"
+after Playwright had already been flipped to core — corrected.
+
 ## Next steps (not yet done)
 - [x] Confirm GitHub Pages is live at https://kifzig.github.io/qa-portfolio/ (confirmed 2026-07-07)
 - [x] Build a real Playwright test suite — done 2026-07-08, see
@@ -117,3 +142,10 @@ resume already tiers it (e.g. resume already says "Selenium" plainly but "Playwr
 - [ ] Optional: resume.html / the QA resume PDF still say Playwright is "(familiarity)" — now
       understates it. Worth a resume revision pass once Postman is also done, rather than
       updating the resume piecemeal.
+- [ ] Playwright Test Agents & MCP — run the planner/generator/healer workflow against
+      playwright-learning (start with an uncovered screen, e.g. PIM module), then flip to core
+- [ ] Test & Eval Harness Engineering — build a small checklist-based eval script scoring a
+      Claude-drafted test scenario set against boundary-value/equivalence-partitioning criteria,
+      run against real Zelifcam requirements, then flip to core
+- [ ] Workflow Automation — build one real n8n or Make workflow (Slack/email summary when the
+      playwright-learning GitHub Actions run finishes), then flip to core and link it

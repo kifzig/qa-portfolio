@@ -258,6 +258,25 @@ test('shows an error for invalid credentials', async ({ page }) => {
           { label: "View source on GitHub", url: "https://github.com/kifzig/playwright-learning" },
           { label: "View the live test report", url: "https://kifzig.github.io/playwright-learning/" }
         ]
+      },
+      {
+        id: "playwright-agents-mcp",
+        name: "Playwright Test Agents & MCP",
+        status: "building",
+        summary: "AI-driven test planning, generation, and self-healing on top of the suite I already built.",
+        description: "Playwright now ships its own AI agent tooling — planner, generator, and healer agents that explore an app, turn a plan into real test files, and repair failing tests by inspecting the live UI — plus an MCP server that lets an AI tool drive a real browser through Playwright's own APIs. My workplace is pushing toward AI-powered QA, and this is the most direct extension of the Playwright suite I already have running: using AI to help plan and maintain coverage instead of just executing it by hand.",
+        example: `# Generate agent definitions for a given AI tool
+npx playwright init-agents --loop=claude
+
+# Workflow the three agents follow:
+#   planner   -> explores the app, writes specs/*.md test plans
+#   generator -> turns a plan into real tests/*.spec.ts files,
+#                verifying selectors and assertions as it goes
+#   healer    -> runs the suite, and on failure inspects the live
+#                UI to patch locators/waits and re-runs until green`,
+        scenario: "Applying this to playwright-learning: instead of me hand-writing every page object and test case, the planner would explore OrangeHRM and draft a plan in plain English, the generator would turn that into real spec files against my existing page objects, and the healer would catch it if OrangeHRM's markup shifts and a locator breaks — the same maintenance problem that already causes Cypress suites to go stale.",
+        outcome: "",
+        roadmap: "Run the agent workflow against the existing playwright-learning suite — start with the planner on a screen I haven't covered yet (e.g. the PIM module) and compare its plan against what I'd have written by hand."
       }
     ]
   },
@@ -306,6 +325,23 @@ Pivot table: candidates by recruiter, by status, refreshed daily
   Values: Count of CandidateID`,
         scenario: "A recruiting report needed to cross-reference two large exports with mismatched formatting. I used Power Query to clean and merge them, XLOOKUP to pull status across sheets, and a macro to repeat the process automatically for the next daily export instead of redoing it by hand.",
         outcome: "Turned a manual, error-prone daily task into a repeatable process, freeing up time for actual analysis instead of data wrangling."
+      },
+      {
+        id: "workflow-automation-platforms",
+        name: "Workflow Automation Platforms (n8n, Zapier, Make)",
+        status: "building",
+        summary: "Extending existing automation experience into no-code workflow platforms.",
+        description: "At RosmanSearch I already automated repetitive data and reporting work with Python scripts, Excel macros, and Salesforce workflows. I'm building that same instinct into no-code/low-code platforms like n8n, Zapier, and Make — for QA specifically, that's things like auto-routing a new defect to the right channel, kicking off a regression run from an external event, or notifying the team when a report or CI run finishes, without writing a bespoke script for each one.",
+        example: `A workflow worth automating (target, not built yet):
+
+Trigger: GitHub Actions run for playwright-learning completes
+Step 1: Check run conclusion (success / failure)
+Step 2: Post a summary to Slack/email — pass count, failed tests,
+        link to the live report (kifzig.github.io/playwright-learning)
+Step 3: If failed, tag it for review instead of it going unnoticed`,
+        scenario: "Right now, seeing whether the Playwright CI run passed means checking GitHub directly. A small n8n or Make workflow watching that same run and posting a summary is a low-lift way to turn 'I have to go check' into 'it tells me' — the same shift as the daily Salesforce reports I used to build, just event-driven instead of on a schedule.",
+        outcome: "",
+        roadmap: "Build the workflow described above against the real playwright-learning CI run as a first concrete example, since the trigger already exists and is public."
       }
     ]
   },
@@ -348,6 +384,25 @@ the happy path, boundary values, and at least two negative cases I might
 be missing. Flag anything in the requirement that's ambiguous."`,
         scenario: "Given a new requirement, I ask Claude to draft candidate test scenarios first, then I review and trim them against what I actually know about the system — it's a starting point that catches cases I might not think of first, not a replacement for judgment about what's actually worth testing.",
         outcome: "Faster test case drafting and a second set of 'eyes' on edge cases, while I stay responsible for deciding what's actually relevant to the system under test. See the Projects page for a deeper, code-level example of Claude used programmatically."
+      },
+      {
+        id: "harness-eval-engineering",
+        name: "Test & Eval Harness Engineering",
+        status: "building",
+        summary: "Building the infrastructure that checks whether AI-generated QA output is actually correct.",
+        description: "As QA leans more on AI — Claude drafting test scenarios today, agent-driven test generation next (see Playwright Test Agents) — the skill that matters most isn't using the AI, it's building the harness that checks whether its output is actually right: explicit pass/fail criteria, structured comparisons against expected coverage, and regression tracking for the AI-generated tests themselves, not just the application under test. My workplace is pushing toward AI-powered QA, and this is the piece that keeps it trustworthy instead of just fast.",
+        example: `Eval harness shape I'm working toward, not a specific tool:
+
+Given: a requirement + an AI-drafted set of test scenarios
+Check: does the set include the documented boundary values?
+Check: is there at least one negative case per input?
+Check: does every scenario map to a real, testable assertion
+       (not a vague "verify it works")?
+Score: pass/fail per check, logged per requirement over time
+       so drift in AI-drafted quality is visible, not assumed`,
+        scenario: "Right now I review Claude's drafted test scenarios by eye against what I know about the system. An eval harness would make that review criteria explicit and repeatable instead of living only in my head — the same shift QA already made years ago going from 'I remember to check X' to a written test case.",
+        outcome: "",
+        roadmap: "Start small: a checklist-based eval script that scores a Claude-drafted test scenario set against the boundary-value/equivalence-partitioning criteria already on this site, run against a handful of real Zelifcam requirements."
       }
     ]
   },
@@ -383,7 +438,7 @@ const TOOLS_TECHNOLOGIES = [
   },
   {
     group: "Testing & QA",
-    items: ["Cypress", "Playwright (building)", "Selenium (familiar)", "curl", "Postman (building)", "Chrome DevTools", "CI/CD workflows"]
+    items: ["Cypress", "Playwright", "Playwright Test Agents (building)", "Selenium (familiar)", "curl", "Postman (building)", "Chrome DevTools", "CI/CD workflows"]
   },
   {
     group: "Databases",
@@ -403,6 +458,10 @@ const TOOLS_TECHNOLOGIES = [
   },
   {
     group: "AI Tools",
-    items: ["Claude / Anthropic API"]
+    items: ["Claude / Anthropic API", "Playwright MCP (building)"]
+  },
+  {
+    group: "Workflow Automation",
+    items: ["n8n (building)", "Zapier (building)", "Make (building)"]
   }
 ];
